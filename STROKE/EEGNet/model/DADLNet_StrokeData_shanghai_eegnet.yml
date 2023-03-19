@@ -1,0 +1,143 @@
+Meta:
+  logName: 1D_LSTM_1F
+  initDataFolder: /home/xumeiyan/Public/Data/MI/Stroke
+  basicFolder: /home/xumeiyan/Public/Reslut/CMANet/Stroke
+  folderName: 20230318_Stroke_independent_400Hz_2class_20channel_128_0.125_0.06
+  sessionNum: 2
+  reCreate: false
+  recreate_fig: true
+  equalSample: true
+  segmentName: 1D_4S_FB4-100_NoS_NoN_SeqChan_LabelHotCode
+  expandData: 1
+  Datasets: StrokeData
+  ReSampling: true
+  downSampling: 400
+  doShuffle: true
+  normalize: false
+  frequency: 500
+  seconds: 1
+  MiTime: 4
+  forcast: 0
+  hotCode: true
+  subsample: 50
+  SelectSub: false
+  intrasub: true
+  isTowClass: false
+  TrainType: independent
+  ClassNum: 2
+  ChannelNum: 19
+  Channel: 49
+  excludeChs:
+  - HEOL
+  - HEOR
+  - ECG
+  - VEOL
+  - VEOU
+  minFreq: 8
+  maxFreq: 30
+  step: 0.3
+  doFilter: true
+  notch:
+  - 50
+  pkl_num: 1
+  multiBand: false
+  filter:
+  - - 4
+    - 8
+  - - 8
+    - 12
+  - - 12
+    - 16
+  - - 16
+    - 20
+  - - 20
+    - 24
+  - - 24
+    - 28
+  - - 28
+    - 32
+  - - 32
+    - 36
+  - - 36
+    - 40
+  FilterType: fir
+ML:
+  folderNum: 5
+  shuffle: true
+  copyTimes: 10
+  pool_size_1d: 2
+  conv2D_filter: 64
+  runInProcess: true
+  test_newest: false
+  folderIndex: []
+  trainEpoch: 1000
+  batch_size: 128
+  curSubIndex: 24
+  curFolderIndex: 1
+  steps_per_epoch: 80
+  pltModel: true
+  filterNum: 20
+  conv2D_kernelSize: 2
+  learningRate: 0.001
+  dropout_rate: 0.25
+  layerType: EEGNet
+  Lstm_Size: 64
+  historyPath: trainHistory
+  from_weight: true
+  activation: softmax
+  loss: categorical_corssentropy
+  Dense_1: 256
+  conv2D_shape:
+  - 2
+  - 2
+  loadModel: true
+  reshape_row: 1
+  kernelSize: 4
+  validSize: 0.3
+  optimizer: nadam
+  callback: val_loss
+  backMode: min
+  sortType: 1
+  checkEffect: true
+  dataShape:
+  - 19
+  - 400
+  dataChannel:
+    Fp1: 0
+    Fp2: 1
+    Fz: 2
+    F3: 3
+    F4: 4
+    F7: 5
+    F8: 6
+    FCz: 7
+    FC3: 8
+    FC4: 9
+    FT7: 10
+    FT8: 11
+    Cz: 12
+    C3: 13
+    C4: 14
+    T7: 15
+    T8: 16
+    CP3: 17
+    CP4: 18
+    TP7: 19
+    TP8: 20
+    Pz: 21
+    P3: 22
+    P4: 23
+    PO5: 24
+    PO6: 25
+    Oz: 26
+    O1: 27
+    O2: 28
+imports:
+  MI.loadData:
+  - loadData
+  - loadData_test
+  - getEvents
+  - countSubNum
+  - get_19MI_1D as getChannels
+  meya.loadData_YML:
+  - getData_chanSeq_OpenBMI as getData
