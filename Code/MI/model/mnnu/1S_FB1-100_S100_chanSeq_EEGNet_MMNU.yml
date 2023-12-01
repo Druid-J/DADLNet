@@ -1,0 +1,154 @@
+Meta:
+  logName: 1D_LSTM_1F
+  initDataFolder: /data0/meya/MI/FistRelease/NoAction/tow_session #原始数据路径
+  basicFolder: /data0/meya/MI/Intersub/Graduation #模型保存路径
+  folderName: 1S_FB1-100_S100_chanSeq_20230305_EEGNet_inter_3class #模型保存文件夹
+  sessionNum: 2
+  NNI: false
+  reCreate: false
+  recreate_fig: true
+  equalSample: true
+  segmentName: 1D_4S_FB4-100_NoS_NoN_SeqChan_LabelHotCode
+  expandData: 1000000
+  Datasets: MNNUData  #选择训练的数据集[BCIC2a/OpenBMI]
+  DodownSampling: false  #是否进行降采样
+  downSampling: 1000 #降采样之后的采样率
+  doShuffle: true
+  normalize: false
+  frequency: 250   #数据原始采样率
+  seconds: 1    #滑动切割窗口大小
+  MiTime: 4     #运动想象片段长度
+  forcast: 0
+  hotCode: true  #是否使用独热编码
+  subsample: 23  #被试数量
+  SelectSub: false #选择被试进行训练
+  intrasub: true
+  isTowClass: false
+  TrainType: independent  #数据生成类别 dependent/independent
+  ClassNum: 3        #数据标签个数  2/3
+  ChannelNum: 20    #选择的通道个数
+  Channel: 20      #2D通道维度
+  excludeChs:
+  - HEOL
+  - HEOR
+  - ECG
+  - VEOL
+  - VEOU
+  minFreq: 8
+  maxFreq: 30
+  step: 0.5  #窗口滑动步长
+  doFilter: true
+  pkl_num: 1
+  multiBand: false  #是否生成多频率段数据
+  filter: [[4,8],[8,12],[12,16],[16,20],[20,24],[24,28],[28,32],[32,36],[36,40]]  #多频率段范围
+  FilterType: fir
+ML:
+  folderNum: 5   #折数
+  shuffle: true
+  copyTimes: 10
+  pool_size_1d: 2
+  conv2D_filter: 64
+  runInProcess: true   #多进程运行
+  test_newest: false
+  folderIndex: []
+  trainEpoch: 1000
+  batch_size: 128
+  curSubIndex: 24
+  curFolderIndex: 1
+  steps_per_epoch: 80
+  pltModel: true
+  filterNum: 20
+  conv2D_kernelSize: 2
+  learningRate: 0.001
+  dropout_rate: 0.5
+  layerType: EEGNet   #训练模型名称，修改这里可以改变训练的模型 FBCnet
+  Lstm_Size: 64
+  historyPath: trainHistory
+  from_weight: true
+  activation: softmax
+  loss: categorical_crossentropy  #categorical_crossentropy/binary_crossentropy
+  Dense_1: 256
+  conv2D_shape:
+  - 2
+  - 2
+  loadModel: true
+  reshape_row: 1
+  kernelSize: 4
+  validSize: 0.3
+  optimizer: nadam
+  callback: val_loss
+  backMode: min
+  sortType: 1
+  checkEffect: true
+  dataChannel:
+    Fpz: 0
+    Fp1: 1
+    Fp2: 2
+    AF3: 3
+    AF4: 4
+    AF7: 5
+    AF8: 6
+    Fz: 7
+    F1: 8
+    F2: 9
+    F3: 10
+    F4: 11
+    F5: 12
+    F6: 13
+    F7: 14
+    F8: 15
+    FCz: 16
+    FC1: 17
+    FC2: 18
+    FC3: 19
+    FC4: 20
+    FC5: 21
+    FC6: 22
+    FT7: 23
+    FT8: 24
+    Cz: 25
+    C1: 26
+    C2: 27
+    C3: 28
+    C4: 29
+    C5: 30
+    C6: 31
+    T7: 32
+    T8: 33
+    CP1: 34
+    CP2: 35
+    CP3: 36
+    CP4: 37
+    CP5: 38
+    CP6: 39
+    TP7: 40
+    TP8: 41
+    Pz: 42
+    P3: 43
+    P4: 44
+    P5: 45
+    P6: 46
+    P7: 47
+    P8: 48
+    POz: 49
+    PO3: 50
+    PO4: 51
+    PO5: 52
+    PO6: 53
+    PO7: 54
+    PO8: 55
+    Oz: 56
+    O1: 57
+    O2: 58
+  dataShape: #输入到模型中的数据维度，用于测试过程 （400,4,9）
+  - 26
+  - 1000
+imports:
+  MI.loadData:
+  - loadData
+  - loadData_test
+  - getEvents
+  - countSubNum
+  - get_26MI_1D as getChannels
+  meya.loadData_YML:
+  - getData_chanSeq as getData

@@ -1,0 +1,16 @@
+experimentName: DADLNet
+searchSpaceFile: search_space.json
+trialCommand: python train.py ../model/Dadlnet_DF_NNI.yml #记得改这个
+trialCodeDirectory: .
+trialGpuNumber: 1
+trialConcurrency: 4    #这个记得同步
+maxExperimentDuration: 240h
+maxTrialNumber: 100
+tuner:
+  name: TPE
+  classArgs:
+    optimize_mode: minimize
+trainingService:
+  platform: local
+  maxTrialNumberPerGpu: 4
+  useActiveGpu: true

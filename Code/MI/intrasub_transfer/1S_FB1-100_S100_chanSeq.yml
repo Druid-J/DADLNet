@@ -1,0 +1,85 @@
+Meta:
+  logName: 1D_LSTM_1F
+  initDataFolder: /home/xumeiyan/Public/Data/MI/OpenBMI/ProcessData/1000Hz_49chan_8_30
+  basicFolder: /home/xumeiyan/Public/Reslut/CMANet/Try/202201112_base3DCNN_OpenBMI_1000Hz_2class_4_9channel_Muti_S_0.0625
+  folderName: 1S_FB1-100_S100_chanSeq_2022079_FRA_2sessionALL_test_2class
+  sessionNum: 2
+  ClassNum: 2
+  reCreate: false
+  equalSample: true
+  segmentName: 1D_4S_FB4-100_NoS_NoN_SeqChan_LabelHotCode
+  expandData: 1
+  doShuffle: true
+  normalize: false
+  frequency: 1000.0
+  MiTime: 4
+  seconds: 1.0
+  forcast: 0
+  DodownSampling: false
+  downSampling: 1000
+  hotCode: true
+  subsample: 24
+  intrasub: true
+  isTowClass: false
+  excludeChs:
+  - HEOL
+  - HEOR
+  - ECG
+  - VEOL
+  - VEOU
+  minFreq: 8
+  maxFreq: 30
+  step: 0.5
+  doFilter: true
+  pkl_num: 1
+ML:
+  folderNum: 5
+  shuffle: true
+  copyTimes: 10
+  pool_size_1d: 2
+  conv2D_filter: 64
+  runInProcess: false
+  test_newest: false
+  folderIndex: []
+  trainEpoch: 1000
+  batch_size: 32
+  curSubIndex: 24
+  curFolderIndex: 2
+  steps_per_epoch: 80
+  pltModel: true
+  filterNum: 32
+  conv2D_kernelSize: 2
+  learningRate: 0.001
+  dropout_rate: 0.5
+  layerType: EEGNet
+  Lstm_Size: 64
+  historyPath: trainHistory
+  from_weight: false
+  activation: softmax
+  loss: categorical_crossentropy
+  Dense_1: 256
+  dataChannel: {'Fp1': 0, 'Fp2': 1, 'F7': 2, 'F3': 3, 'Fz': 4, 'F4': 5, 'F8': 6, 'FC5': 7, 'FC1': 8, 'FC2': 9, 'FC6': 10, 'T7': 11, 'C3': 12, 'Cz': 13, 'C4': 14, 'T8': 15, 'TP9': 16, 'CP5': 17, 'CP1': 18, 'CP2': 19, 'CP6': 20, 'TP10': 21, 'P7': 22, 'P3': 23, 'Pz': 24, 'P4': 25, 'P8': 26, 'PO9': 27, 'O1': 28, 'Oz': 29, 'O2': 30, 'PO10': 31, 'FC3': 32, 'FC4': 33, 'C5': 34, 'C1': 35, 'C2': 36, 'C6': 37, 'CP3': 38, 'CPz': 39, 'CP4': 40, 'P1': 41, 'P2': 42, 'POz': 43, 'FT9': 44, 'FTT9h': 45, 'FTT7h': 46, 'TP7': 47, 'TPP9h': 48, 'FT10': 49, 'FTT10h': 50, 'FTT8h': 51, 'TP8': 52, 'TPP10h': 53, 'F9': 54, 'F10': 55, 'AF7': 56, 'AF3': 57, 'AF4': 58, 'AF8': 59, 'PO3': 60, 'PO4': 61}
+  conv2D_shape:
+  - 2
+  - 2
+  loadModel: true
+  reshape_row: 4
+  kernelSize: 4
+  validSize: 0.3
+  optimizer: nadam
+  callback: loss
+  backMode: min
+  sortType: 1
+  checkEffect: true
+  dataShape:
+  - 26
+  - 1000
+imports:
+  MI.loadData:
+  - loadData
+  - loadData_test
+  - getEvents
+  - get_31MI_1D as getChannels
+  - countSubNum
+  meya.loadData_YML:
+  - getData_chanSeq as getData

@@ -1,0 +1,98 @@
+absl-py ==1.0.0                 
+appdirs ==1.4.4                   
+astunparse ==1.6.3                   
+bzip2==1.0.8                
+ca-certificates==2022.3.29            
+cachetools==5.0.0                  
+certifi==2021.10.8               
+charset-normalizer==2.0.12                
+conda-pack ==0.6.0                   
+cudatoolkit ==10.1.243            
+cudnn==7.6.5.32          
+cycler==0.11.0                
+decorator==5.1.1              
+fonttools==4.32.0              
+gast == 0.3.3                  
+google-auth == 2.6.5                   
+google-auth-oauthlib == 0.4.6                
+google-pasta==0.2.0                    
+grpcio == 1.45.0                  
+h5py == 2.10.0                   
+idna ==3.3                     
+importlib-metadata==4.11.3                  
+jinja2 ==3.1.1                   
+joblib==1.1.0               
+keras ==2.4.3                   
+keras-preprocessing ==1.1.2                   
+keras-self-attention ==0.51.0                 
+kiwisolver==1.4.2                    
+ld_impl_linux-64 ==2.36.1               
+libblas==3.9.0           
+libcblas ==3.9.0           
+libffi==3.4.2                
+libgcc-ng==11.2.0             
+libgfortran-ng==11.2.0            
+libgfortran5==11.2.0            
+libgomp==11.2.0              
+liblapack==3.9.0           
+libnsl==2.0.0              
+libopenblas==0.3.20         
+libstdcxx-ng==11.2.0          
+libuuid==2.32.1           
+libzlib==1.2.11           
+markdown ==3.3.6                   
+markupsafe ==2.1.1                 
+matplotlib ==3.5.1                  
+mne==1.0.1                  
+ncurses==6.3                  
+numpy ==1.19.5              
+oauthlib ==3.2.0                 
+openssl==3.0.2               
+opt-einsum==3.3.0                 
+packaging==21.3               
+pandas==1.4.2          
+pillow==9.1.0                  
+pip==22.0.4          
+pooch ==1.6.0                    
+protobuf ==3.20.0                  
+pyasn1==0.4.8                    
+pyasn1-modules==0.2.8                   
+pydot==1.4.2                    
+pyparsing==3.0.9                   
+python==3.8.13         
+python-dateutil==2.8.2             
+python-graphviz==0.19.1                   
+python_abi==3.8                   
+pytz==2022.1             
+pyyaml==6.0                  
+readline==8.1.2              
+requests==2.27.1                   
+requests-oauthlib==1.3.1                   
+rsa==4.8                     
+scikit-learn ==1.0.2                    
+scipy ==1.7.1                    
+setuptools==62.1.0           
+six==1.16.0             
+sqlite==3.38.2              
+tensorboard==2.8.0                    
+tensorboard-data-server==0.6.1                 
+tensorboard-plugin-wit==1.8.1                    
+tensorflow==2.3.0                   
+tensorflow-estimator==2.3.0                   
+tensorflow-gpu==2.3.0                   
+termcolor==1.1.0                  
+threadpoolctl==3.1.0                  
+tk==8.6.12               
+tqdm==4.64.0                  
+urllib3==1.26.9                 
+werkzeug==2.1.1                   
+wget==3.2                     
+wheel==0.37.1             
+wrapt==1.14.0               
+xlrd==2.0.1             
+xlsxwriter==3.0.3                  
+xlutils==2.0.0             
+xlwt==1.3.0                    
+xz==5.2.5               
+zipp==3.8.0                  
+zlib ==1.2.11  

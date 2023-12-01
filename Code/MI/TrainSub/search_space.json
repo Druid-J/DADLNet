@@ -1,0 +1,12 @@
+{
+  "features_1": {"_type": "choice","_value": [16,32,64]},
+  "features_2": {"_type": "choice","_value": [16,32,64,128]},
+  "features_3": {"_type": "choice","_value": [16,32,64,128]},
+  "features_4": {"_type": "choice","_value": [16,32,64,128]},
+  "ratio": {"_type": "choice","_value": [2,4,8,16]},
+  "drop": {"_type": "choice","_value": [0.1,0.2,0.3,0.4,0.5]},
+  "l2": {"_type":"logquniform","_value": [0.001,1.0]},
+  "batch": {"_type": "choice","_value": [32,64,128,256]}
+}
+
+

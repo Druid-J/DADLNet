@@ -1,0 +1,142 @@
+Meta:
+  logName: 1D_LSTM_1F
+  initDataFolder: /home/xumeiyan/Public/Data/MI/kaya2018 #原始数据路径
+  # G:\PG\1.myself\1.08Target\4.DataSet\Kaya2018
+  # MNNU: /data0/meya/Data/MI/datasets/Kaya2018
+  # 中医药： /home/xumeiyan/Public/Data/MI/kaya2018
+  #交大： /home/chan/data/chan/meya/DATA/Kaya
+  basicFolder: /home/xumeiyan/Public/Reslut/DADLNet #模型保存路径
+  #MNNU: /data0/meya/MI/Intersub/CMANet
+  #中医院: /home/xumeiyan/Public/Reslut/CMANet/Try
+  #交大:/home/chan/data/chan/meya/Result/MI/DADLNet/Intra
+  folderName: 20230830_Kaya_intra_attention_400Hz_2class_0.125_ref #模型保存文件夹
+  sessionNum: 2
+  reCreate: false
+  recreate_fig: true
+  equalSample: true
+  standardize: false #1dcnn网络数据标准化
+  scale: false #1dcnn网络数据归一化
+  segmentName: 1D_4S_FB4-100_NoS_NoN_SeqChan_LabelHotCode
+  expandData: 1 #经过RESIT插值需要 倍乘1000000 普通情况/spline下只需要倍乘1
+  interp: false #是否进行插值
+  interpType: zero #插值类型 neighbor
+  reference: true
+  saveMat: false #是否保存mat文件 用于Resit插值
+  matPath: G:\PG\1.myself\1.08Target\4.DataSet\Kaya2018\raw\plot_mat\sub04\interp_0 #用于保存mat数据的路径，使用本地文件夹的路径
+  new_chan:
+    - FT7
+    - FC5
+    - FC3
+    - FC1
+    - FCz
+    - FC2
+    - FC4
+    - FC6
+    - FT8
+    - C5
+    - C1
+    - C2
+    - C6
+    - TP7
+    - CP5
+    - CP3
+    - CP1
+    - CPz
+    - CP2
+    - CP4
+    - CP6
+    - TP8
+    - P5
+    - P1
+    - P2
+    - P6
+  Datasets: Kaya2018  #选择训练的数据集[BCIC2a/OpenBMI/Kaya2018]
+  ReSampling: true  #是否进行降采样
+  downSampling: 400  #降采样之后的采样率
+  doShuffle: true
+  normalize: false #eegsym
+  frequency: 200   #数据原始采样率
+  seconds: 0.5    #滑动切割窗口大小
+  MiTime: 1     #运动想象片段长度
+  forcast: 0
+  hotCode: false  #是否使用独热编码
+  subsample: 11  #被试数量
+  SelectSub: false #选择被试进行训练
+  intrasub: true
+  isTowClass: false
+  TrainType: dependent  #数据生成类别 dependent/independent
+  ClassNum: 2        #数据标签个数  2/3
+  To3D: true  #是否进行数据转换
+  ChannelNum: 36    #选择的通道个数
+  Channel: 49     #2D通道维度
+  excludeChs:
+  - A1
+  - A2
+  - X3
+  minFreq: 8
+  maxFreq: 30
+  step: 0.06   #窗口滑动步长
+  doFilter: true
+  pkl_num: 1
+  multiBand: false  #是否生成多频率段数据
+  filter: [[4,8],[8,12],[12,16],[16,20],[20,24],[24,28],[28,32],[32,36],[36,40]]  #多频率段范围
+  FilterType: fir
+ML:
+  folderNum: 5   #折数
+  shuffle: true
+  copyTimes: 10
+  pool_size_1d: 2
+  conv2D_filter: 64
+  runInProcess: true  #多进程运行
+  test_newest: false
+  folderIndex: []
+  trainEpoch: 1000
+  batch_size: 32
+  curSubIndex: 24
+  curFolderIndex: 1
+  steps_per_epoch: 80
+  pltModel: true
+  filterNum: 20
+  conv2D_kernelSize: 2
+  learningRate: 0.001
+  dropout_rate: 0.25
+  layerType: DADLNet   #训练模型名称，修改这里可以改变训练的模型 FBCnet
+  Lstm_Size: 64
+  historyPath: trainHistory
+  from_weight: true
+  activation: sigmoid
+  loss: binary_crossentropy  #categorical_crossentropy/binary_crossentropy
+  Dense_1: 256
+  conv2D_shape:
+  - 2
+  - 2
+  loadModel: true
+  reshape_row: 1
+  kernelSize: 4
+  validSize: 0.3
+  optimizer: nadam
+  callback: val_loss
+  backMode: min
+  sortType: 1
+  checkEffect: true
+  dataShape: #输入到模型中的数据维度，用于测试过程 （400,4,9）
+  - 200
+  - 4
+  - 9
+  dataChannel: {'Fp1':0,'Fp2':1,'F7':2,  'F3':3,  'Fz':4, 'F4':5, 'F8':6, 'FT7':7, 'FC5':8, 'FC3':9,
+                'FC1':10, 'FCz':11, 'FC2':12, 'FC4':13, 'FC6':14,'FT8':15, 'T7':16, 'C5':17, 'C3':18,
+                 'C1':19, 'Cz':20,'C2':21, 'C4':22, 'C6':23, 'T8':24, 'TP7':25, 'CP5':26, 'CP3':27,
+                'CP1':28, 'CPz':29, 'CP2':30, 'CP4':31, 'CP6':32, 'TP8':33,'P7':34,'P5':35,'P3':36,
+                 'P1':37,'Pz':38,'P2':39,'P4':40,'P6':41,'P8':42,'O1':43,'O2':44}  #在数据划分时通过挑选通道查找对应通道的索引 因此顺序要和orderchannel保持一致
+#  dataChannel: {'Fp1':0,'Fp2':1,'F3':2,'F4':3,'C3':4,'C4':5,'P3':6,'P4':7,'O1':8,
+#               'O2':9,'F7':10,'F8':11,'T7':12,'T8':13,'P7':14,'P8':15,'Fz':16,'Cz':17,
+#               'Pz':18} #不进行插值时的通道
+imports:
+  MI.loadData:
+  - loadData
+  - loadData_test
+  - getEvents
+  - countSubNum
+  - get_Kaya_36MI_1D as getChannels #不进行插值时选择的通道 只有10个 get_Kaya_10MI_1D or get_Kaya_36MI_1D
+  meya.loadData_YML:
+  - getData_chanSeq_BCI2008 as getData

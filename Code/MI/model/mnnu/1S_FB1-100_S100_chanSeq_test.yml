@@ -1,0 +1,80 @@
+Meta:
+  logName: 1D_LSTM_1F
+  initDataFolder: /data0/meya/MI/FistRelease/NoAction/tow_session
+  basicFolder: /data0/meya/MI/Intersub/CMANet
+  folderName: 1S_FB1-100_S100_chanSeq_20230202_EEGNet_inter_2class
+  sessionNum: 2
+  reCreate: false
+  NNI: false
+  equalSample: true
+  segmentName: 1D_4S_FB4-100_NoS_NoN_SeqChan_LabelHotCode
+  expandData: 1000000
+  doShuffle: true
+  normalize: false
+  frequency: 1000.0
+  seconds: 1.0
+  forcast: 0
+  hotCode: true
+  subsample: 24
+  intrasub: true
+  isTowClass: false
+  trainType: inter
+  ClassNum: 3
+  excludeChs:
+  - HEOL
+  - HEOR
+  - ECG
+  - VEOL
+  - VEOU
+  minFreq: 8
+  maxFreq: 30
+  step: 0.5
+  doFilter: true
+  pkl_num: 1
+ML:
+  folderNum: 5
+  shuffle: true
+  copyTimes: 10
+  pool_size_1d: 2
+  conv2D_filter: 64
+  runInProcess: false
+  test_newest: false
+  folderIndex: []
+  trainEpoch: 1000
+  batch_size: 128
+  curSubIndex: 24
+  curFolderIndex: 1
+  steps_per_epoch: 80
+  pltModel: true
+  filterNum: 20
+  conv2D_kernelSize: 2
+  learningRate: 0.001
+  dropout_rate: 0.25
+  layerType: EEGNet
+  Lstm_Size: 64
+  historyPath: trainHistory
+  from_weight: false
+  activation: softmax
+  loss: categorical_crossentropy
+  Dense_1: 256
+  conv2D_shape:
+  - 2
+  - 2
+  loadModel: true
+  reshape_row: 1
+  kernelSize: 4
+  validSize: 0.3
+  optimizer: nadam
+  callback: val_loss
+  backMode: min
+  sortType: 1
+  checkEffect: true
+  dataShape:
+  - 26
+  - 1000
+imports:
+  MI.loadData_mnnu:
+  - loadData_test
+  - getEvents_MNNU
+  - get_26MI_1D as getChannels
+  - countSubNum

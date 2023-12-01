@@ -1,0 +1,12 @@
+{
+  "filter1_num": {"_type": "choice","_value": [16,32,64,128]},
+  "filter2_num": {"_type": "choice","_value": [16,32,64,128]},
+  "filter3_num": {"_type": "choice","_value": [16,32,64,128]},
+  "filter4_num": {"_type": "choice","_value": [16,32,64,128]},
+  "regular_l2": {"_type": "choice","_value": [0.01,0.001,0.0001]},
+  "action": {"_type": "choice","_value": ["elu","relu"]},
+  "Dropout": {"_type": "uniform","_value": [0.25,0.6]},
+  "batch_size": {"_type": "choice","_value": [16,32,64,128]},
+  "learn_rate": {"_type": "choice","_value": [0.00001,0.0001,0.001,0.01,0.1]},
+  "Optimizer": {"_type": "choice","_value": ["adam","adamax","sgd","nadam"]}
+}
